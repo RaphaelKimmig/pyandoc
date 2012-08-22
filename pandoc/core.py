@@ -1,6 +1,6 @@
 import subprocess
 
-PANDOC_PATH = '/Users/kreitz/.cabal/bin//pandoc'
+PANDOC_PATH = None
 
 
 class Document(object):
@@ -43,7 +43,7 @@ class Document(object):
 	def _output(self, format):
 		# print format
 		p = subprocess.Popen(
-			[PANDOC_PATH, '--from=%s' % self._format, '--to=%s' % format],
+			[PANDOC_PATH or 'pandoc', '--from=%s' % self._format, '--to=%s' % format],
 			stdin=subprocess.PIPE, 
 			stdout=subprocess.PIPE
 		)
